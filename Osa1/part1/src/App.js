@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 
 const Header = (props) => {
+  console.log(props);
   return(
     <div>
       <h1>{props.course}</h1>
@@ -25,20 +26,27 @@ const Total = (props) => {
   }
 
 const App = () => {
+  
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   const Content = () => {
     return(
       <div>
-        <Part props={part1} exercises={exercises1}/>
-        <Part props={part2} exercises={exercises2}/>
-        <Part props={part3} exercises={exercises3}/>
+        <Part props={part1.name} exercises={part1.exercises}/>
+        <Part props={part2.name} exercises={part2.exercises}/>
+        <Part props={part3.name} exercises={part3.exercises}/>
       </div>
     )
   }
@@ -47,7 +55,7 @@ const App = () => {
     <div>
       <Header course = {course}/>
       <Content/>
-      <Total e1= {exercises1} e2= {exercises2} e3= {exercises3}/>
+      <Total e1= {part1.exercises} e2= {part2.exercises} e3= {part3.exercises}/>
     </div>
   )
 }
