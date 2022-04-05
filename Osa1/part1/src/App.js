@@ -3,7 +3,7 @@ import React, { Component }  from 'react';
 const Header = (props) => {
   return(
     <div>
-      <h1>{props.course}</h1>
+      <h1>{props.course.name}</h1>
     </div>
   )
 }
@@ -19,29 +19,31 @@ const Part = ({props, exercises}) => {
 
 const App = () => {
   
-  const course = 'Half Stack application development'
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   const Content = () => {
 
-    let partName = parts.map(nimiElementti =>{
+    let partName = course.parts.map(nimiElementti =>{
       return `${nimiElementti.name}`;
     })
 
-    let partExercises = parts.map(harjoitusElementti =>{
+    let partExercises = course.parts.map(harjoitusElementti =>{
       return `${harjoitusElementti.exercises}`;
     })
 
@@ -56,7 +58,7 @@ const App = () => {
 
   const Total = () => {
 
-    let total = parts.map(harjoitusElementti =>{
+    let total = course.parts.map(harjoitusElementti =>{
       return harjoitusElementti.exercises;
     })
     
@@ -71,8 +73,8 @@ const App = () => {
   return (
     <div>
       <Header course = {course}/>
-      <Content parts = {parts}/>
-      <Total parts={parts}/>
+      <Content parts = {course}/>
+      <Total parts={course}/>
     </div>
   )
 }
