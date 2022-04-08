@@ -18,7 +18,7 @@ const Part = ({props, exercises}) => {
 
 
 const App = () => {
-  
+
   const course = {
     name: 'Half Stack application development',
     parts: [
