@@ -2,11 +2,22 @@ import React, { Component } from "react";
 import { useState } from "react";
 
 const Random = (p) => {
-  const maxLenght = p.anecdotes;
-  const rand = Math.floor(Math.random() * maxLenght.length);
+  const [points, setPoints] = useState(Array(p.anecdotes.length).fill(0));
+  const rand = Math.floor(Math.random() * p.anecdotes.length);
+  const vote = () => {
+    const copy = [...points];
+    copy[rand] += 1;
+    return setPoints(copy);
+  };
   return (
     <div>
-      <p>{maxLenght[rand]}</p>
+      <div>
+        <p>{p.anecdotes[rand]}</p>
+        <p>has {points[rand]} vote</p>
+      </div>
+      <div style={{ float: "left" }}>
+        <button onClick={vote}>Vote</button>
+      </div>
     </div>
   );
 };
@@ -14,9 +25,7 @@ const Random = (p) => {
 const Button = (p) => {
   return (
     <div>
-      <button on onClick={p.handleClick}>
-        {p.text}
-      </button>
+      <button onClick={p.handleClick}> {p.text} </button>
     </div>
   );
 };
