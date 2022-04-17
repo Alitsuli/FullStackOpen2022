@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { useState } from "react";
 
 const Statistics = (p) => {
+  if (p.all === 0) {
+    return (
+      <div>
+        <p>No feedBack given</p>
+      </div>
+    );
+  }
   return (
     <div>
       <h1>{p.text}</h1>
