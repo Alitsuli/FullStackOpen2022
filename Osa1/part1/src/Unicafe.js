@@ -10,24 +10,12 @@ const Button = (p) => {
 };
 const StatisticLine = (p) => {
   if (p.text === "positive") {
-    return (
-      <div>
-        {p.text} {p.value.toFixed(1)} %
-      </div>
-    );
+    return <div>{p.value.toFixed(1)} %</div>;
   }
   if (p.text === "average") {
-    return (
-      <div>
-        {p.text} {p.value.toFixed(1)}
-      </div>
-    );
+    return <div>{p.value.toFixed(1)}</div>;
   } else {
-    return (
-      <div>
-        {p.text} {p.value}
-      </div>
-    );
+    return <div>{p.value}</div>;
   }
 };
 const Statistics = (p) => {
@@ -40,13 +28,47 @@ const Statistics = (p) => {
   }
   return (
     <div>
-      <h1>statistics</h1>
-      <StatisticLine text="good" value={p.good} />
-      <StatisticLine text="neutral" value={p.neutral} />
-      <StatisticLine text="bad" value={p.bad} />
-      <StatisticLine text="all" value={p.all} />
-      <StatisticLine text="average" value={p.avarge} />
-      <StatisticLine text="positive" value={p.positive} />
+      <h1>Statistics</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>Good</td>
+            <td>
+              <StatisticLine text="good" value={p.good} />
+            </td>
+          </tr>
+          <tr>
+            <td>Neutral</td>
+            <td>
+              <StatisticLine text="neutral" value={p.neutral} />
+            </td>
+          </tr>
+          <tr>
+            <td>Bad</td>
+            <td>
+              <StatisticLine text="bad" value={p.bad} />
+            </td>
+          </tr>
+          <tr>
+            <td>All</td>
+            <td>
+              <StatisticLine text="all" value={p.all} />
+            </td>
+          </tr>
+          <tr>
+            <td>Average</td>
+            <td>
+              <StatisticLine text="average" value={p.avarge} />
+            </td>
+          </tr>
+          <tr>
+            <td>Positive</td>
+            <td>
+              <StatisticLine text="positive" value={p.positive} />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
