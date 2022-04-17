@@ -5,7 +5,7 @@ const Statistics = (p) => {
   if (p.all === 0) {
     return (
       <div>
-        <p>No feedBack given</p>
+        <p>No feedback given</p>
       </div>
     );
   }
