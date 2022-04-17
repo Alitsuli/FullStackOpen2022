@@ -1,6 +1,35 @@
 import React, { Component } from "react";
 import { useState } from "react";
 
+const Button = (p) => {
+  return (
+    <>
+      <button onClick={p.handleClick}>{p.text}</button>
+    </>
+  );
+};
+const StatisticLine = (p) => {
+  if (p.text === "positive") {
+    return (
+      <div>
+        {p.text} {p.value.toFixed(1)} %
+      </div>
+    );
+  }
+  if (p.text === "average") {
+    return (
+      <div>
+        {p.text} {p.value.toFixed(1)}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {p.text} {p.value}
+      </div>
+    );
+  }
+};
 const Statistics = (p) => {
   if (p.all === 0) {
     return (
@@ -11,25 +40,13 @@ const Statistics = (p) => {
   }
   return (
     <div>
-      <h1>{p.text}</h1>
-      <div>
-        <a>Good {p.good}</a>
-      </div>
-      <div>
-        <a>Neutral {p.neutral}</a>
-      </div>
-      <div>
-        <a>Bad {p.bad}</a>
-      </div>
-      <div>
-        <a>All {p.all}</a>
-      </div>
-      <div>
-        <a>Avarge {p.avarge}</a>
-      </div>
-      <div>
-        <a>Positive {p.positive}</a>
-      </div>
+      <h1>statistics</h1>
+      <StatisticLine text="good" value={p.good} />
+      <StatisticLine text="neutral" value={p.neutral} />
+      <StatisticLine text="bad" value={p.bad} />
+      <StatisticLine text="all" value={p.all} />
+      <StatisticLine text="average" value={p.avarge} />
+      <StatisticLine text="positive" value={p.positive} />
     </div>
   );
 };
@@ -57,9 +74,9 @@ const Unicafe = () => {
   return (
     <div>
       <h1>Give FeedBack</h1>
-      <button onClick={sumGood}>Good</button>
-      <button onClick={sumNeutral}>Neutral</button>
-      <button onClick={sumBad}>Bad</button>
+      <Button handleClick={sumGood} text={"Good"} />
+      <Button handleClick={sumNeutral} text={"Neutral"} />
+      <Button handleClick={sumBad} text={"Bad"} />
       <Statistics
         text={"Statistics"}
         good={good}
