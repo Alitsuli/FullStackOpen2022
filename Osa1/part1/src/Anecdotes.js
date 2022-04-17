@@ -4,28 +4,31 @@ import { useState } from "react";
 const Random = (p) => {
   const [points, setPoints] = useState(Array(p.anecdotes.length).fill(0));
   const rand = Math.floor(Math.random() * p.anecdotes.length);
+
   const vote = () => {
     const copy = [...points];
     copy[rand] += 1;
     return setPoints(copy);
   };
+
   return (
     <div>
+      <h1>{p.text}</h1>
       <div>
         <p>{p.anecdotes[rand]}</p>
-        <p>has {points[rand]} vote</p>
+        <p>Has {points[rand]} vote</p>
       </div>
       <div style={{ float: "left" }}>
         <button onClick={vote}>Vote</button>
       </div>
-    </div>
-  );
-};
-
-const Button = (p) => {
-  return (
-    <div>
-      <button onClick={p.handleClick}> {p.text} </button>
+      <div>
+        <button onClick={p.handleClick}> {p.text2} </button>
+      </div>
+      <div>
+        <h1>{p.text3}</h1>
+        <p>{p.anecdotes[points.indexOf(Math.max(...points))]}</p>
+        <p>Has {points[points.indexOf(Math.max(...points))]} votes</p>
+      </div>
     </div>
   );
 };
@@ -49,8 +52,13 @@ const Anecdotes = () => {
 
   return (
     <div>
-      <Random anecdotes={anecdotes} />
-      <Button handleClick={next} text={"Next anecdote"} />
+      <Random
+        text={"Anecdote of the day"}
+        anecdotes={anecdotes}
+        handleClick={next}
+        text2={"Next anecdote"}
+        text3={"Anecdote with most votes"}
+      />
     </div>
   );
 };
